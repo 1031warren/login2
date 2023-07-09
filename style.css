@@ -1,59 +1,27 @@
-.countdown{
-    width: 400px;
-    background-color: coral;
-}
+function validateForm(){
+    //get the user name that was entered in the form
+    var userName = document.userForm.userName.value;
+    //get the password that was entered in the form
+    var password = document.userForm.userPassword.value;
 
-form{
+    //reset the html elements to their default looks
+    document.getElementById("errorMessage").innerHTML = ""; 
+    document.getElementById("iblUserName").style.backgroundColor = "white";
+    document.getElementById("IblPassword").style.backgroundColor = "white";
 
-    width: 300px;
-    border: 1px solid black;
-    border-radius: 5px;
-}
-
-label{
-    margin-bottom: 5px;
-  
-}
-
-input{
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 2px;
-
-}
-   
-.row{
-    padding-bottom: 10px;
-}
-   
-.error{
-    color: red;
-}
-    
-input[type="submit"]{
-    background-color: blue;
-    color: ivory;
-    cursor: pointer;
-}
-    
-input[type="submit"]:hover{
-   background-color: lightcoral;
-
-}
-.wrapper header{
-  font-size: 22px;
-  font-weight: 600; 
-  padding: 20px 30px; 
-  border-bottom: 1px solid  #bfbfbf;
-
-}
-.wrapper form{
-    margin: 35px 30px;
-
-}
-form .dbl-field{
-    display: flex;
-    align-items: center;
-    margin-bottom: 25px;
-    justify-content: space-between;
+    //if no user name entered, alert the user
+    if(userName == null|| userName == ""){
+        document.getElementById("errorMessage").innerHTML = "User name can't be blank"; 
+        document.getElementById("iblUserName").style.backgroundColor = "blue";
+        //alert("User name can't be blank");
+        document.getElementById("userName").focus();
+        return false;
+    }
+    //if no password entered, alert the user
+    else if(password.length < 8){
+        document.getElementById("errorMessage").innerHTML = "Password can't be blank"; 
+        document.getElementById("IblPassword").style.backgroundColor = "blue";
+        document.getElementById("userPassword").focus();
+        return false;
+    }
 }
